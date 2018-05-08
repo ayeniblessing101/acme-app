@@ -1,10 +1,32 @@
 import { Component } from '@angular/core';
 
+import { ProductService } from './products/product.service';
+
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+ template: `
+  <div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand">{{pageTitle}}</a>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/welcome']">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/products']">Product List</a>
+        </li>
+      </ul>
+    </div>
+    </nav>
+    <div class='container'>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+ `,
+ providers: [ ProductService ]
 })
 export class AppComponent {
-  title = 'app';
+  pageTitle = 'Acme Project Management';
 }
+
